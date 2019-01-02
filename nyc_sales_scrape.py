@@ -43,5 +43,5 @@ df = df.reset_index(drop=True)
 df.to_csv(dataDir+"nycgov_sales_historic.csv", index=False)
 # TODO: Update incrementally with monthly calls to this same site.
 
- 
+  
 
