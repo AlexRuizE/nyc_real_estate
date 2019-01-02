@@ -26,18 +26,20 @@ for link in dataLinks:
 	fileNames.append(fileName)
 	getData = requests.get(link)
 	if getData.ok:
-		with open(dataDir+fileName, "wb") as f:
+		with open(dataDir+"nycgov_raw/"+fileName, "wb") as f:
 			f.write(getData.content)
 			print("Saved {} in {}".format(link, dataDir))
 	else:
 		print("Link {} not retreived.".format(link))
 
-
 # Update dataframe
 skipRows=4
 df = pd.DataFrame()
 for file in fileNames:
-	dfTemp = pd.read_excel(dataDir+fileName, skiprows=skipRows)
+	dfTemp = pd.read_excel(dataDir+file, skiprows=skipRows)
 	df = df.append(dfTemp)
-df.colums = 
+df.columns = [col.lower().replace(" ","_") for col in df.columns]
+df = df.reset_index(drop=True)
+df.to_csv(dataDir+"nycgov_sales_historic.csv", index=False)
+# TODO: Update incrementally with monthly calls to this same site.
 
