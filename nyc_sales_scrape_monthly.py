@@ -40,6 +40,8 @@ for file in fileNames:
 	df = df.append(dfTemp)
 df.columns = [col.lower().replace(" ","_") for col in df.columns]
 df = df.reset_index(drop=True)
+
+# Save update dataframe
 df.to_csv(dataDir+"nycgov_sales_historic.csv", index=False)
 # TODO: Update incrementally with monthly calls to this same site.
 
