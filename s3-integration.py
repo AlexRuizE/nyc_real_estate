@@ -1,24 +1,8 @@
-"""Integrate S3 data to workflow"""
+"""I/O data local/remote."""
 
 import os
 from b2blaze import B2
 import boto3
-
-def getS3Data(bucket=None, key=None):
-	"""Get a file from S3."""
-	assert all(v is not None for v in [bucket, key]), "Define a bucket and a key."
-	s3 = boto3.client("s3")
-	try:
-		rObject = s3.get_object(Bucket=bucket, Key=key)
-		return rObject['Body'].read()	# Bytes, not string
-	except Exception as e:
-		print(e)
-
-def putS3Data():
-	pass
-
-
-
 
 class IODataB2:
 	"""Read/write remote data Using B2"""
@@ -40,7 +24,22 @@ class IODataB2:
 				bucket.files.upload(contents=f, file_name=remoteFile)
 		print("Uploaded {} to {}/{}".format(localFile, self.bucket.bucket_name, remoteFile))
 
-
 	def getRemote(self):
+		"""Get remote file from remote bucket"""
 		pass
+
+def getS3Data(bucket=None, key=None):
+	"""Get a file from S3."""
+	assert all(v is not None for v in [bucket, key]), "Define a bucket and a key."
+	s3 = boto3.client("s3")
+	try:
+		rObject = s3.get_object(Bucket=bucket, Key=key)
+		return rObject['Body'].read()	# Bytes, not string
+	except Exception as e:
+		print(e)
+
+def putS3Data():
+	pass
+
+
 
