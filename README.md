@@ -2,6 +2,8 @@
 
 Scripts (mostly python) to retrieve, update, process and visualize NYC real estate data from multiple official and secondary sources. It contains the following files:
 
+* __data-io.py__: Classes to get/put data from local <> remote.
+
 * __nyc_sales_scrape_monthly.py__: Recurrent (monthly) update of the rolling real estate sales data provided by the Department of Finance on NYC. Must be run monthly to update the resulting dataframe.
 
 * __nyc_nyu_historical.py__: Script to process geotagged historical real estate sales data in NYC, as provided by NYU.
