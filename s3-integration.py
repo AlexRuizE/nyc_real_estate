@@ -20,23 +20,27 @@ def putS3Data():
 
 
 
-class IODataTrendcast:
-	"""Using B2"""
+class IODataB2:
+	"""Read/write remote data Using B2"""
 	key_id="002b76795509bd80000000002"
 	application_key="K0022KfEz54NeI7MvorXXivHq0vfWqY"
 
 	def __init__(self, bucketName):
-		self.b2 = B2(key_id=key_id, application_key=application_key)
+		self.b2 = B2(key_id=self.key_id, application_key=self.application_key)
 		self.bucket = b2.buckets.get(bucketName) 
 
-	def putLocal(self, localFile, remoteFile, numThreads):
+	def putLocal(self, localFile, remoteFile, numThreads=2):
 		"""Put local file in remote bucket"""
-
 		fileSize = os.path.getsize(localFile)/1000000 # Mb
 		if fileSize>500:
 			with open(localFile, "rb") as f:
 				bucket.files.upload_large_file(contents=f, file_name=remoteFile, num_threads=numThreads)
 		else:
+			with open(localFile, "rb") as f:
+				bucket.files.upload(contents=f, file_name=remoteFile)
+		print("Uploaded {} to {}/{}".format(localFile, self.bucket.bucket_name, remoteFile))
 
 
+	def getRemote(self):
+		pass
 
