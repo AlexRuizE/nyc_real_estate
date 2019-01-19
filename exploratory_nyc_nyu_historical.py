@@ -26,9 +26,18 @@ sales = gpd.pd.DataFrame()
 base_x,base_y = 6.4,4.8
 expansion_f = 1.8
 figsize=(base_x*expansion_f, base_y*expansion_f)
+
+
+# Single year
+file=shapeFiles[-1]
+sales = gpd.read_file(dataDir+file)
+c1=[col for col in sales.columns if col not in ('geometry', 'Sale_id')]
+
+sales[(sales.usable=="N") & (sales.price>100)]
+
 for file in shapeFiles:
 	year = file.split("_")[-1].split(".")[0]
-	print("Loading {}".format(file))
+	print(f"Loading {file}")
 	salesTemp = gpd.read_file(dataDir+file)
 	salesTemp["year"] = year
 	sales = sales.append(salesTemp)
