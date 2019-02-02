@@ -8,7 +8,7 @@ import pandas as pd
 homeUrl = "https://www1.nyc.gov"
 salesUrl = "/site/finance/taxes/property-rolling-sales-data.page"
 dataDir = "/home/monorhesus/Dropbox/codigo/data/nyc_rolling_sales/"
-
+   
 
 # Get borough sales urls
 mainPage = requests.get(homeUrl+salesUrl)
