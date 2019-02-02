@@ -26,7 +26,7 @@ sales = gpd.pd.DataFrame()
 base_x,base_y = 6.4,4.8
 expansion_f = 1.8
 figsize=(base_x*expansion_f, base_y*expansion_f)
- 
+  
 
 # Single year
 file=shapeFiles[-1]
