@@ -1,3 +1,7 @@
-this is a file that is in master. please edit me. yay.
-hello this is tereza's prrooooduct
-this is something alex wrote.
+"""test git python"""
+
+
+def func1(x,y):
+    add=x+y
+    return add
+
