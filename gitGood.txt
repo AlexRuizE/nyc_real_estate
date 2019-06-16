@@ -1,0 +1,33 @@
+Initial Setup
+Fork the nyc_real_estate repository 
+Clone the FORKED repository onto your machine 
+Now it’s time to setup the origin and upstream:
+Type git remote -v, you should see 2 “origins” like so:
+$ git remote -v
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+
+Follow the steps here to configure the upstream and origin    
+https://help.github.com/en/articles/configuring-a-remote-for-a-fork
+
+
+
+To synchronize your current state of repo with upstream do 
+$ git pull upstream master
+
+To create a branch do:
+$ git branch your-branch
+
+Switch to your branch:
+$ git checkout your-branch
+
+$ git add files
+$ git commit -m “Message”
+$ git push
+
+Push all of your work onto your local branch until ready for Pull Request and/or Merge.
+
+To have your local branch show up in remote upstream repo 
+ $ git push -u origin your-branch
+ 
+ 
